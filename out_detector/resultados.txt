@@ -1,0 +1,21 @@
+Dataset: 4800 ventanas, 40 máquinas simuladas, 28 features, clases [1600 1600 1600]
+
+== Validación cruzada separada por máquina (5 folds) ==
+RandomForest sin calibrar        F1 macro = 0.942 +- 0.056
+RandomForest con calibración     F1 macro = 0.978 +- 0.006
+MLP 32-16 con calibración        F1 macro = 0.975 +- 0.012
+Matriz de confusión (RF con calibración; filas = real, columnas = predicho):
+[[1561    5   34]
+ [  10 1586    4]
+ [  46    5 1549]]
+
+== Generalización a rpm no vistas (entrena rpm < 22,000, prueba >= 22,000) ==
+RF sin calibrar     F1 macro = 0.865
+RF con calibración  F1 macro = 0.979
+
+== Robustez al ruido del sensor (entrena con ruido nominal, prueba con ruido x3, máquinas nuevas) ==
+RF sin calibrar     F1 macro = 0.407
+RF con calibración  F1 macro = 0.932
+
+Features más importantes: periodicidad_h (0.12), banda_l2 (0.11), rms_h (0.11), banda_h13 (0.09), banda_l1 (0.08), banda_l3 (0.08), banda_h14 (0.06), rms_l (0.06)
+Tamaño: RF = 26190 nodos | MLP = 1507 parámetros
